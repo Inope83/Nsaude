@@ -1,0 +1,10 @@
+Django>=5.2,<6.0
+# PostgreSQL driver — needed when POSTGRES_DB is set (production)
+psycopg[binary]>=3.1
+# REST API + JWT auth (design §9)
+djangorestframework>=3.16,<4.0
+djangorestframework-simplejwt>=5.4,<6.0
+# Production WSGI server
+gunicorn>=23.0,<24.0
+# Static file serving in production (hashed + pre-compressed)
+whitenoise>=6.9,<7.0

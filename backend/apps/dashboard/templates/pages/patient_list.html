@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Records" %}</p>
+    <h1>{{ page_title }}</h1>
+  </div>
+  <p class="meta-line mb-0">{% trans "List shows the safe patient handle only — contact details live on the record itself." %}</p>
+</div>
+
+<form method="get" class="filter-bar d-flex gap-2 align-items-end flex-wrap section-gap">
+  <div class="flex-grow-1" style="min-width: 220px;">
+    <label class="form-label" for="q">{% trans "Search by patient ID or name" %}</label>
+    <input class="form-control" type="search" id="q" name="q" value="{{ q }}"
+           placeholder="{% trans 'PT-… or name' %}">
+  </div>
+  <button class="btn btn-primary" type="submit">{% trans "Search" %}</button>
+  {% if q %}
+    <a class="btn btn-outline-secondary" href="{% url 'dashboard:patient-list' %}">{% trans "Clear" %}</a>
+  {% endif %}
+</form>
+
+{% if page_obj.object_list %}
+  <div class="card section-gap">
+    <div class="card-body">
+      <div class="table-wrap">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>{% trans "Patient ID" %}</th>
+              <th>{% trans "Age group" %}</th>
+              <th>{% trans "Sex" %}</th>
+              <th>{% trans "Suco" %}</th>
+              <th class="text-end">{% trans "Registered" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in page_obj.object_list %}
+              <tr>
+                <td><a href="{% url 'dashboard:patient-detail' p.id %}"><span class="num">{{ p.patient_id }}</span></a></td>
+                <td>{{ p.age_group }}</td>
+                <td>{{ p.sex }}</td>
+                <td>{{ p.suco__name }}</td>
+                <td class="text-end"><span class="num">{{ p.created_at|date:"Y-m-d" }}</span></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% include "partials/pagination.html" with page=page_obj %}
+{% else %}
+  {% if q %}
+    {% translate "No patients match your search" as t_title %}
+    {% translate "Check the patient ID or try another spelling." as t_msg %}
+  {% else %}
+    {% translate "No patients yet" as t_title %}
+    {% translate "Patients registered from the field will appear here after sync." as t_msg %}
+  {% endif %}
+  {% include "components/empty_state.html" with icon="bi-people" title=t_title message=t_msg %}
+{% endif %}
+{% endblock %}

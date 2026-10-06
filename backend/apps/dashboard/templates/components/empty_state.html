@@ -1,0 +1,14 @@
+{% comment %}
+Generic empty/error/offline state.
+Labels must be translated by the CALLER so makemessages can extract them:
+  {% translate "No records yet" as t_title %}
+  {% include "components/empty_state.html" with icon="bi-inbox" title=t_title %}
+{% endcomment %}
+<div class="state-box" role="status">
+  <i class="bi {{ icon|default:'bi-inbox' }} state-icon" aria-hidden="true"></i>
+  <h3>{{ title }}</h3>
+  {% if message %}<p class="mb-0">{{ message }}</p>{% endif %}
+  {% if action_url and action_label %}
+    <a class="btn btn-outline-secondary btn-sm mt-3" href="{{ action_url }}">{{ action_label }}</a>
+  {% endif %}
+</div>

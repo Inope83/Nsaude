@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Directory" %}</p>
+    <h1>{{ page_title }}</h1>
+  </div>
+  <p class="meta-line mb-0">{% trans "Active health facilities across Timor-Leste." %}</p>
+</div>
+
+<form method="get" class="filter-bar d-flex gap-3 align-items-end flex-wrap section-gap">
+  <div>
+    <label class="form-label" for="municipality">{% trans "Municipality" %}</label>
+    <select class="form-select" id="municipality" name="municipality"
+            onchange="this.form.submit()">
+      <option value="">{% trans "All municipalities" %}</option>
+      {% for m in municipalities %}
+        <option value="{{ m.code }}" {% if m.code == selected_municipality %}selected{% endif %}>
+          {{ m.name }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label class="form-label" for="suco">{% trans "Suco" %}</label>
+    <select class="form-select" id="suco" name="suco" onchange="this.form.submit()">
+      <option value="">{% trans "All sucos" %}</option>
+      {% for s in sucos %}
+        <option value="{{ s.code }}" {% if s.code == selected_suco %}selected{% endif %}>
+          {{ s.name }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  {% if selected_municipality or selected_suco %}
+    <a class="btn btn-outline-secondary" href="{% url 'dashboard:facility-list' %}">{% trans "Clear" %}</a>
+  {% endif %}
+</form>
+
+{% if page_obj.object_list %}
+  <div class="card section-gap">
+    <div class="card-body">
+      <div class="table-wrap">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>{% trans "Facility" %}</th>
+              <th>{% trans "Type" %}</th>
+              <th>{% trans "Suco" %}</th>
+              <th>{% trans "Municipality" %}</th>
+              <th>{% trans "Phone" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for f in page_obj.object_list %}
+              <tr>
+                <td>{{ f.name }}</td>
+                <td>{{ f.get_facility_type_display }}</td>
+                <td>{{ f.suco.name }}</td>
+                <td>{{ f.suco.administrative_post.municipality.name }}</td>
+                <td><span class="num">{{ f.phone|default:"—" }}</span></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% include "partials/pagination.html" with page=page_obj %}
+{% else %}
+  {% translate "No facilities match these filters" as t_title %}
+  {% translate "Try another municipality or suco." as t_msg %}
+  {% include "components/empty_state.html" with icon="bi-hospital" title=t_title message=t_msg %}
+{% endif %}
+{% endblock %}

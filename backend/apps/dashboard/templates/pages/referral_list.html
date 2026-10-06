@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n status_tags %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Between facilities" %}</p>
+    <h1>{{ page_title }}</h1>
+  </div>
+  <p class="meta-line mb-0">{% trans "Sent from or received by your facility." %}</p>
+</div>
+
+<div class="filter-bar d-flex gap-2 flex-wrap align-items-center section-gap">
+  <span class="overline mb-0">{% trans "Status" %}</span>
+  <a class="btn btn-sm {% if not current_status %}btn-primary{% else %}btn-outline-secondary{% endif %}"
+     href="{% url 'dashboard:referral-list' %}">{% trans "All" %}</a>
+  {% for value, label in status_choices %}
+    <a class="btn btn-sm {% if current_status == value %}btn-primary{% else %}btn-outline-secondary{% endif %}"
+       href="{% url 'dashboard:referral-list' %}?status={{ value }}">{{ label }}</a>
+  {% endfor %}
+</div>
+
+{% if page_obj.object_list %}
+  <div class="card section-gap">
+    <div class="card-body">
+      <div class="table-wrap">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>{% trans "Patient" %}</th>
+              <th>{% trans "Urgency" %}</th>
+              <th>{% trans "Status" %}</th>
+              <th>{% trans "From" %}</th>
+              <th>{% trans "To" %}</th>
+              <th class="text-end">{% trans "Created" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in page_obj.object_list %}
+              <tr>
+                <td><span class="num">{{ r.patient__patient_id }}</span></td>
+                <td>{% status_badge 'urgency' r.urgency %}</td>
+                <td>{% status_badge 'referral_status' r.status %}</td>
+                <td>{{ r.source_facility__name }}</td>
+                <td>{{ r.destination_facility__name }}</td>
+                <td class="text-end"><span class="num">{{ r.created_at|date:"Y-m-d H:i" }}</span></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% include "partials/pagination.html" with page=page_obj %}
+{% else %}
+  {% if current_status %}
+    {% translate "No referrals with this status" as t_title %}
+    {% translate "Try another status filter." as t_msg %}
+  {% else %}
+    {% translate "No referrals" as t_title %}
+    {% translate "Referrals between facilities will appear here." as t_msg %}
+  {% endif %}
+  {% include "components/empty_state.html" with icon="bi-arrow-left-right" title=t_title message=t_msg %}
+{% endif %}
+{% endblock %}

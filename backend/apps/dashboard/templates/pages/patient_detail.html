@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load i18n status_tags %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Patient record" %}</p>
+    <h1>{{ patient.patient_id }}</h1>
+  </div>
+  <a class="meta-line mb-0" href="{% url 'dashboard:patient-list' %}">&larr; {% trans "Back to patients" %}</a>
+</div>
+
+{% if not patient.is_active %}
+  <div class="banner banner--warning mb-4" role="status">
+    <i class="bi bi-person-x" aria-hidden="true"></i>
+    <span>{% trans "This record is inactive." %}</span>
+  </div>
+{% endif %}
+
+<div class="card-grid section-gap">
+  <div class="card p-4">
+    <p class="overline">{% trans "Identity" %}</p>
+    <dl class="mb-0">
+      <dt class="meta-line">{% trans "Name" %}</dt>
+      <dd>{{ patient.full_name }}</dd>
+      <dt class="meta-line">{% trans "Date of birth" %}</dt>
+      <dd>{{ patient.date_of_birth|date:"Y-m-d"|default:"—" }} ({{ patient.age_group }})</dd>
+      <dt class="meta-line">{% trans "Sex" %}</dt>
+      <dd>{{ patient.get_sex_display }}</dd>
+    </dl>
+  </div>
+
+  <div class="card p-4">
+    <p class="overline">{% trans "Contact" %}</p>
+    <dl class="mb-0">
+      <dt class="meta-line">{% trans "Phone" %}</dt>
+      <dd>{{ patient.phone|default:"—" }}</dd>
+      <dt class="meta-line">{% trans "Address" %}</dt>
+      <dd>{{ patient.address|default:"—" }}</dd>
+      <dt class="meta-line">{% trans "Emergency contact" %}</dt>
+      <dd>{{ patient.emergency_contact|default:"—" }}</dd>
+    </dl>
+  </div>
+
+  <div class="card p-4">
+    <p class="overline">{% trans "Location" %}</p>
+    <dl class="mb-0">
+      <dt class="meta-line">{% trans "Suco" %}</dt>
+      <dd>{{ patient.suco.name }}</dd>
+      <dt class="meta-line">{% trans "Administrative post" %}</dt>
+      <dd>{{ patient.suco.administrative_post.name }}</dd>
+      <dt class="meta-line">{% trans "Municipality" %}</dt>
+      <dd>{{ patient.suco.administrative_post.municipality.name }}</dd>
+      <dt class="meta-line">{% trans "Registered" %}</dt>
+      <dd><span class="num">{{ patient.created_at|date:"Y-m-d H:i" }}</span></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="card section-gap">
+  <div class="card-header">
+    <span class="overline mb-0">{% trans "Monitoring records" %}</span>
+  </div>
+  <div class="card-body">
+    {% if monitoring_records %}
+      <div class="table-wrap">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>{% trans "Observed" %}</th>
+              <th>{% trans "Temp (°C)" %}</th>
+              <th>{% trans "HR" %}</th>
+              <th>{% trans "RR" %}</th>
+              <th>{% trans "BP" %}</th>
+              <th>{% trans "SpO₂" %}</th>
+              <th>{% trans "Symptoms" %}</th>
+              <th>{% trans "By" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in monitoring_records %}
+              <tr>
+                <td><span class="num">{{ r.recorded_at|date:"Y-m-d H:i" }}</span></td>
+                <td>{{ r.temperature|default:"—" }}</td>
+                <td>{{ r.heart_rate|default:"—" }}</td>
+                <td>{{ r.respiratory_rate|default:"—" }}</td>
+                <td>
+                  {% if r.blood_pressure_systolic %}
+                    <span class="num">{{ r.blood_pressure_systolic }}/{{ r.blood_pressure_diastolic }}</span>
+                  {% else %}—{% endif %}
+                </td>
+                <td>{{ r.oxygen_saturation|default:"—" }}</td>
+                <td>{{ r.symptoms|default:"—" }}</td>
+                <td>{{ r.recorded_by.username|default:"—" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      {% translate "No monitoring records" as t_title %}
+      {% translate "Observations recorded from the field will appear here after sync." as t_msg %}
+      {% include "components/empty_state.html" with icon="bi-activity" title=t_title message=t_msg %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "No permission" %} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    {% translate "You do not have permission to view this page." as t_msg %}
+    {% translate "Your account only shows data for its assigned scope. If you think this is a mistake, contact your system administrator." as t_sub %}
+    {% translate "Back to overview" as t_home %}
+    {% include "components/empty_state.html" with icon="bi-shield-lock" title=t_msg message=t_sub action_url="/" action_label=t_home %}
+  </div>
+</div>
+{% endblock %}

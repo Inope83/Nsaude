@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Connectivity" %}</p>
+    <h1>{{ page_title }}</h1>
+  </div>
+  <p class="meta-line mb-0">{% trans "Last client check-in per facility — not a live connection test." %}</p>
+</div>
+
+{% if total_pending %}
+  <div class="banner banner--warning mb-4" role="status">
+    <i class="bi bi-cloud-slash" aria-hidden="true"></i>
+    <span>{% blocktrans with n=total_pending %}{{ n }} records pending sync across facilities.{% endblocktrans %}</span>
+  </div>
+{% endif %}
+
+{% if rows %}
+  <div class="card section-gap">
+    <div class="card-body">
+      <div class="table-wrap">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>{% trans "Facility" %}</th>
+              <th>{% trans "Location" %}</th>
+              <th>{% trans "Last sync" %}</th>
+              <th class="text-end">{% trans "Pending records" %}</th>
+              <th>{% trans "Reported by" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows %}
+              <tr>
+                <td>{{ row.facility.name }}</td>
+                <td>{{ row.facility.suco.administrative_post.municipality.name }} / {{ row.facility.suco.name }}</td>
+                <td>
+                  {% if row.heartbeat %}
+                    <span class="num">{{ row.heartbeat.created_at|date:"Y-m-d H:i" }}</span>
+                    {% if row.stale %}
+                      <span class="status-badge status-badge--warning">
+                        <i class="bi bi-clock" aria-hidden="true"></i>
+                        {% trans "STALE" %}
+                      </span>
+                    {% endif %}
+                  {% else %}
+                    <span class="status-badge status-badge--neutral">
+                      <i class="bi bi-cloud-slash" aria-hidden="true"></i>
+                      {% trans "NEVER SYNCED" %}
+                    </span>
+                  {% endif %}
+                </td>
+                <td class="text-end">{{ row.heartbeat.pending_count|default:0 }}</td>
+                <td>{{ row.heartbeat.reported_by.username|default:"—" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% else %}
+  {% translate "No active facilities" as t_title %}
+  {% translate "Facilities registered by the administrator will appear here." as t_msg %}
+  {% include "components/empty_state.html" with icon="bi-hospital" title=t_title message=t_msg %}
+{% endif %}
+{% endblock %}

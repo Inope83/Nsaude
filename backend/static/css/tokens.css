@@ -1,0 +1,94 @@
+/* ==========================================================================
+   SaúdeKonekta design tokens — single source of truth for the web dashboard.
+   Names/values mirror mobile/lib/core/theme/*.dart (Step 2 approved table).
+   genesis-DESIGN.md governs; use ONLY these variables in base.css/templates.
+   ========================================================================== */
+
+:root {
+  /* --- Core palette (app_colors.dart) --- */
+  --color-primary: #6366F1;           /* interactive accents, links, focus */
+  --color-primary-pressed: #4F46E5;   /* filled button bg (C4, AA-safe) */
+  --color-background: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-surface-sunken: #F4F4F5;
+  --color-text-primary: #0A0A0A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: #9C9C9C;        /* disabled/decorative only, never body text */
+  --color-text-on-primary: #FFFFFF;
+  --color-border: #E8E8EC;
+  --color-border-strong: #D0D0D8;
+
+  /* --- Semantic fills --- */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-emergency: #DC2626;         /* AA-safe with white text */
+
+  /* --- Tints + accessible text pairs (app_status.dart / AppTints) --- */
+  --tint-success: #ECFDF5;   --text-success: #047857;
+  --tint-warning: #FFFBEB;   --text-warning: #B45309;
+  --tint-error: #FEF2F2;     --text-error: #B91C1C;
+  --tint-emergency: #FEF2F2; --text-emergency: #B91C1C;
+  --tint-info: #EEF2FF;      --text-info: #4338CA;
+  --tint-neutral: #F4F4F5;   --text-neutral: #6B6B6B;
+
+  /* --- Focus / overlay --- */
+  --color-focus-ring: rgba(99, 102, 241, 0.12);
+  --color-scrim: rgba(10, 10, 10, 0.45);
+
+  /* --- Typography (system fonts only — C1) --- */
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fs-section-heading: 2rem;   /* 32px web section heading */
+  --fs-subhead: 1.5rem;         /* 24px */
+  --fs-body: 0.9375rem;         /* 15px genesis body */
+  --fs-small: 0.8125rem;        /* 13px */
+  --fs-caption: 0.75rem;        /* 12px */
+  --fs-overline: 0.6875rem;     /* 11px uppercase */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --lh-heading: 1.2;
+  --lh-body: 1.5;
+  --ls-heading: -0.03em;
+  --ls-overline: 0.06em;
+
+  /* --- Spacing (4px grid; +10px from genesis component padding "medium") --- */
+  --space-4: 4px;   --space-8: 8px;   --space-10: 10px; --space-12: 12px;
+  --space-16: 16px; --space-20: 20px; --space-24: 24px; --space-32: 32px;
+  --space-40: 40px; --space-48: 48px; --space-64: 64px; --space-80: 80px;
+  --space-96: 96px;
+  --screen-horizontal: 24px;           /* container horizontal padding */
+  --section-spacing: 48px;             /* tablet/desktop */
+  --card-grid-gap: 24px;
+
+  /* --- Radius --- */
+  --radius-xs: 4px;    /* tags, chips, badges */
+  --radius-sm: 6px;    /* buttons, inputs */
+  --radius-md: 8px;    /* panels, dropdowns */
+  --radius-lg: 12px;   /* cards, dialogs */
+  --radius-full: 9999px;
+
+  /* --- Sizing --- */
+  --touch-target-min: 48px;
+  --nav-height: 56px;
+  --table-row-height: 48px;
+
+  /* --- Elevation (flat + border; shadow only for overlays/interactive) --- */
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-primary-glow: 0 4px 12px rgba(99, 102, 241, 0.35);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  /* --- Bootstrap remapping (v5.3 uses --bs-* internally) --- */
+  --bs-primary: #4F46E5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-body-font-family: var(--font-family);
+  --bs-body-bg: var(--color-background);
+  --bs-body-color: var(--color-text-primary);
+  --bs-border-color: var(--color-border);
+  --bs-link-color: var(--color-primary-pressed);
+  --bs-link-hover-color: var(--color-primary);
+  --bs-emphasis-color: var(--color-text-primary);
+  --bs-secondary-color: var(--color-text-secondary);
+  --bs-tertiary-bg: var(--color-surface-sunken);
+  --bs-focus-ring-color: rgba(99, 102, 241, 0.12);
+}

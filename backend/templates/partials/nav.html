@@ -1,0 +1,68 @@
+{% load i18n %}
+<nav class="app-nav">
+  <div class="page-container py-0 d-flex align-items-center gap-3 flex-wrap">
+    <a class="navbar-brand mb-0 py-2" href="/">SaúdeKonekta</a>
+
+    <ul class="nav align-items-center gap-1 flex-grow-1 mb-0">
+      {% if user.is_authenticated %}
+        {% url 'dashboard:overview' as url_overview %}
+        {% url 'dashboard:emergency-list' as url_emergencies %}
+        {% url 'dashboard:referral-list' as url_referrals %}
+        {% url 'dashboard:patient-list' as url_patients %}
+        {% url 'dashboard:facility-list' as url_facilities %}
+        {% url 'dashboard:map' as url_map %}
+        {% url 'dashboard:sync-status' as url_sync %}
+        {% if url_overview %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'overview' %} active{% endif %}" href="{{ url_overview }}">{% trans "Overview" %}</a></li>{% endif %}
+        {% if url_emergencies %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'emergency-list' %} active{% endif %}" href="{{ url_emergencies }}">{% trans "Emergencies" %}</a></li>{% endif %}
+        {% if url_referrals %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'referral-list' %} active{% endif %}" href="{{ url_referrals }}">{% trans "Referrals" %}</a></li>{% endif %}
+        {% if url_patients %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'patient-list' %} active{% endif %}" href="{{ url_patients }}">{% trans "Patients" %}</a></li>{% endif %}
+        {% if url_facilities %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'facility-list' %} active{% endif %}" href="{{ url_facilities }}">{% trans "Facilities" %}</a></li>{% endif %}
+        {% if url_map %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'map' %} active{% endif %}" href="{{ url_map }}">{% trans "Map" %}</a></li>{% endif %}
+        {% if url_sync %}<li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'sync-status' %} active{% endif %}" href="{{ url_sync }}">{% trans "Sync" %}</a></li>{% endif %}
+      {% endif %}
+    </ul>
+
+    <div class="d-flex align-items-center gap-3">
+      {% if user.is_authenticated %}
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user.username }}
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <span class="dropdown-item-text small text-muted-token">
+                {% trans "Role" %}: {{ user.get_role_display|default:user.role }}
+              </span>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              {% url 'users:logout' as url_logout %}
+              {% if url_logout %}
+                <form method="post" action="{{ url_logout }}">
+                  {% csrf_token %}
+                  <button type="submit" class="dropdown-item">{% trans "Log out" %}</button>
+                </form>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      {% endif %}
+
+      {% get_available_languages as languages %}
+      {% url 'set_language' as url_set_language %}
+      {% if languages|length > 1 and url_set_language %}
+        <form method="post" action="{{ url_set_language }}" class="d-inline">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ request.path }}">
+          <select name="language" class="form-select form-select-sm"
+                  onchange="this.form.submit()" aria-label="{% trans 'Language' %}">
+            {% for code, name in languages %}
+              <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>{{ code|upper }}</option>
+            {% endfor %}
+          </select>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,970 @@
+# Tetum translations — populated in step 13 (translation pass).
+msgid ""
+msgstr ""
+"Project-Id-Version: SaudeKonekta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-06 15:47+0000\n"
+"Language: tet\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/audit/models.py:16
+msgid "Actor"
+msgstr "Ator"
+
+#: apps/audit/models.py:32
+msgid "Old status"
+msgstr "Estadu tuan"
+
+#: apps/audit/models.py:33
+msgid "New status"
+msgstr "Estadu foun"
+
+#: apps/audit/models.py:38
+msgid "Status event"
+msgstr "Eventu estadu"
+
+#: apps/audit/models.py:39
+msgid "Status events"
+msgstr "Eventus estadu"
+
+#: apps/dashboard/templates/pages/emergency_list.html:9
+msgid "Field reports"
+msgstr "Relatóriu fatin"
+
+#: apps/dashboard/templates/pages/emergency_list.html:12
+#: apps/dashboard/templates/pages/overview.html:12
+#: templates/registration/login.html:45
+msgid ""
+"Decision support only — it does not diagnose or replace medical "
+"professionals."
+msgstr "Ajuda tomak de'it — ida la'é diagnostiku ka substitui profisionáis saúde."
+
+#: apps/dashboard/templates/pages/emergency_list.html:16
+#: apps/dashboard/templates/pages/emergency_list.html:34
+#: apps/dashboard/templates/pages/overview.html:51
+#: apps/dashboard/templates/pages/referral_list.html:16
+#: apps/dashboard/templates/pages/referral_list.html:34
+#: apps/emergencies/models.py:42 apps/referrals/models.py:51
+msgid "Status"
+msgstr "Estadu"
+
+#: apps/dashboard/templates/pages/emergency_list.html:18
+#: apps/dashboard/templates/pages/referral_list.html:18
+msgid "All"
+msgstr "Hotu"
+
+#: apps/dashboard/templates/pages/emergency_list.html:32
+#: apps/dashboard/templates/pages/overview.html:49
+#: apps/dashboard/templates/pages/overview.html:86
+#: apps/dashboard/templates/pages/referral_list.html:32
+#: apps/patients/models.py:81
+msgid "Patient"
+msgstr "Paziente"
+
+#: apps/dashboard/templates/pages/emergency_list.html:33
+#: apps/dashboard/templates/pages/overview.html:50
+#: apps/emergencies/models.py:38
+msgid "Severity"
+msgstr "Severidade"
+
+#: apps/dashboard/templates/pages/emergency_list.html:35
+#: apps/dashboard/templates/pages/facility_list.html:51
+#: apps/dashboard/templates/pages/sync_status.html:29 apps/syncapp/models.py:20
+#: apps/users/models.py:23
+msgid "Facility"
+msgstr "Fasilitade"
+
+#: apps/dashboard/templates/pages/emergency_list.html:36
+#: apps/dashboard/templates/pages/overview.html:52
+#: apps/dashboard/templates/pages/overview.html:89
+#: apps/dashboard/templates/pages/referral_list.html:37
+msgid "Created"
+msgstr "Kria"
+
+#: apps/dashboard/templates/pages/emergency_list.html:57
+msgid "No cases with this status"
+msgstr "La'os kazu ho esta ida"
+
+#: apps/dashboard/templates/pages/emergency_list.html:58
+#: apps/dashboard/templates/pages/referral_list.html:60
+msgid "Try another status filter."
+msgstr "Hadin filtru estadu seluk."
+
+#: apps/dashboard/templates/pages/emergency_list.html:60
+msgid "No emergency cases"
+msgstr "La'os kazu emergensia"
+
+#: apps/dashboard/templates/pages/emergency_list.html:61
+msgid "Cases reported from the field will appear here."
+msgstr "Kazu informadu husi fatin sei hatudu iha ne'e."
+
+#: apps/dashboard/templates/pages/facility_list.html:9
+msgid "Directory"
+msgstr "Diretóriu"
+
+#: apps/dashboard/templates/pages/facility_list.html:12
+msgid "Active health facilities across Timor-Leste."
+msgstr "Fasilitades saúde ativas iha Timór-Leste tomak."
+
+#: apps/dashboard/templates/pages/facility_list.html:17
+#: apps/dashboard/templates/pages/facility_list.html:54
+#: apps/dashboard/templates/pages/patient_detail.html:54
+#: apps/facilities/admin.py:17 apps/locations/admin.py:30
+#: apps/locations/models.py:22
+msgid "Municipality"
+msgstr "Munisípiu"
+
+#: apps/dashboard/templates/pages/facility_list.html:20
+msgid "All municipalities"
+msgstr "Munisípius hotu"
+
+#: apps/dashboard/templates/pages/facility_list.html:29
+#: apps/dashboard/templates/pages/facility_list.html:53
+#: apps/dashboard/templates/pages/patient_detail.html:50
+#: apps/dashboard/templates/pages/patient_list.html:37
+#: apps/locations/models.py:74
+msgid "Suco"
+msgstr "Suco"
+
+#: apps/dashboard/templates/pages/facility_list.html:31
+msgid "All sucos"
+msgstr "Sucos hotu"
+
+#: apps/dashboard/templates/pages/facility_list.html:40
+#: apps/dashboard/templates/pages/patient_list.html:23
+msgid "Clear"
+msgstr "Limpa"
+
+#: apps/dashboard/templates/pages/facility_list.html:52
+msgid "Type"
+msgstr "Tipu"
+
+#: apps/dashboard/templates/pages/facility_list.html:55
+#: apps/dashboard/templates/pages/patient_detail.html:38
+#: apps/facilities/models.py:38 apps/patients/models.py:63
+msgid "Phone"
+msgstr "Telefone"
+
+#: apps/dashboard/templates/pages/facility_list.html:75
+msgid "No facilities match these filters"
+msgstr "La'es fasilitade konet ho filtrus ida"
+
+#: apps/dashboard/templates/pages/facility_list.html:76
+msgid "Try another municipality or suco."
+msgstr "Tenta munisípiu ka suco seluk."
+
+#: apps/dashboard/templates/pages/map.html:13
+#: apps/dashboard/templates/pages/overview.html:9 apps/dashboard/views.py:41
+#: templates/partials/nav.html:15
+msgid "Overview"
+msgstr "Resumen"
+
+#: apps/dashboard/templates/pages/map.html:16
+msgid ""
+"Markers show facilities, sync freshness and emergency counts — never patient "
+"information."
+msgstr ""
+"Markadores hatudu fasilitades, fresesia sincronizasaun no konta emergensia  "
+"— ita de'it la'os informasaun paziente."
+
+#: apps/dashboard/templates/pages/map.html:22
+#, python-format
+msgid ""
+"%(n)s active facilities have no coordinates yet — they are listed on the "
+"Facilities page instead."
+msgstr ""
+"%(n)s fasilitade ativa la'os koordinadas tan — ha'u-hotu iha pájina  "
+"Fasilitates."
+
+#: apps/dashboard/templates/pages/map.html:28
+msgid "Map imagery unavailable — markers still work without it."
+msgstr "Imajen mapa la'as — markadores asia la'o mai."
+
+#: apps/dashboard/templates/pages/map.html:32
+msgid "Layers"
+msgstr "Camadas"
+
+#: apps/dashboard/templates/pages/map.html:34
+msgid "Facilities & sync"
+msgstr "Fasilitates & sincronizasaun"
+
+#: apps/dashboard/templates/pages/map.html:36
+#: apps/dashboard/templates/pages/overview.html:17
+msgid "Active emergencies"
+msgstr "Emergensias ativas"
+
+#: apps/dashboard/templates/pages/map.html:37
+#, python-format
+msgid "%(n)s facilities on the map"
+msgstr "%(n)s fasilitades iha mapa"
+
+#: apps/dashboard/templates/pages/map.html:40
+msgid "Map of health facilities"
+msgstr "Mapa fasilitades saúde"
+
+#: apps/dashboard/templates/pages/overview.html:19
+msgid "View emergencies"
+msgstr "Haree emergensias"
+
+#: apps/dashboard/templates/pages/overview.html:22
+#: apps/dashboard/templates/pages/overview.html:77
+msgid "Pending referrals"
+msgstr "Referálias péndentes"
+
+#: apps/dashboard/templates/pages/overview.html:24
+msgid "View referrals"
+msgstr "Haree referália"
+
+#: apps/dashboard/templates/pages/overview.html:27
+msgid "Active patients"
+msgstr "Pazientes ativos"
+
+#: apps/dashboard/templates/pages/overview.html:29
+msgid "View patients"
+msgstr "Haree pazientis"
+
+#: apps/dashboard/templates/pages/overview.html:32
+#: apps/dashboard/templates/pages/patient_detail.html:64
+#: apps/monitoring/models.py:66
+msgid "Monitoring records"
+msgstr "Rekordis monitorizasaun"
+
+#: apps/dashboard/templates/pages/overview.html:40
+msgid "Recent emergencies"
+msgstr "Emergensias foun"
+
+#: apps/dashboard/templates/pages/overview.html:41
+#: apps/dashboard/templates/pages/overview.html:78
+msgid "View all"
+msgstr "Haree hotu"
+
+#: apps/dashboard/templates/pages/overview.html:68
+msgid "No active emergencies"
+msgstr "La'os emergensia ativa"
+
+#: apps/dashboard/templates/pages/overview.html:69
+msgid "New emergency cases from the field will appear here."
+msgstr "Kazu emergensia foun husi fatin sei hatudu iha ne'e."
+
+#: apps/dashboard/templates/pages/overview.html:87
+#: apps/dashboard/templates/pages/referral_list.html:33
+#: apps/referrals/models.py:49
+msgid "Urgency"
+msgstr "Ujénsia"
+
+#: apps/dashboard/templates/pages/overview.html:88
+#: apps/dashboard/templates/pages/referral_list.html:36
+msgid "To"
+msgstr "Ba"
+
+#: apps/dashboard/templates/pages/overview.html:105
+msgid "No pending referrals"
+msgstr "La'os referália péndente"
+
+#: apps/dashboard/templates/pages/overview.html:106
+msgid "Referrals waiting for action will appear here."
+msgstr "Referália o ita de'it sei hatudu iha ne'e."
+
+#: apps/dashboard/templates/pages/patient_detail.html:9
+msgid "Patient record"
+msgstr "Rekordi paziente"
+
+#: apps/dashboard/templates/pages/patient_detail.html:12
+msgid "Back to patients"
+msgstr "Fila ba pazientis"
+
+#: apps/dashboard/templates/pages/patient_detail.html:18
+msgid "This record is inactive."
+msgstr "Rekordi ne'e la'ativu."
+
+#: apps/dashboard/templates/pages/patient_detail.html:24
+msgid "Identity"
+msgstr "Identidade"
+
+#: apps/dashboard/templates/pages/patient_detail.html:26
+#: apps/facilities/models.py:27 apps/locations/models.py:9
+#: apps/locations/models.py:35 apps/locations/models.py:61
+msgid "Name"
+msgstr "Naran"
+
+#: apps/dashboard/templates/pages/patient_detail.html:28
+#: apps/patients/models.py:60
+msgid "Date of birth"
+msgstr "Data nascimentu"
+
+#: apps/dashboard/templates/pages/patient_detail.html:30
+#: apps/dashboard/templates/pages/patient_list.html:36
+#: apps/patients/models.py:61
+msgid "Sex"
+msgstr "Sexu"
+
+#: apps/dashboard/templates/pages/patient_detail.html:36
+msgid "Contact"
+msgstr "Kontaktu"
+
+#: apps/dashboard/templates/pages/patient_detail.html:40
+#: apps/facilities/models.py:31 apps/patients/models.py:68
+msgid "Address"
+msgstr "Endresu"
+
+#: apps/dashboard/templates/pages/patient_detail.html:42
+#: apps/patients/models.py:71
+msgid "Emergency contact"
+msgstr "Kontaktu emergensia"
+
+#: apps/dashboard/templates/pages/patient_detail.html:48
+#: apps/dashboard/templates/pages/sync_status.html:30
+msgid "Location"
+msgstr "Lojasau"
+
+#: apps/dashboard/templates/pages/patient_detail.html:52
+#: apps/locations/models.py:48
+msgid "Administrative post"
+msgstr "Postu administrativu"
+
+#: apps/dashboard/templates/pages/patient_detail.html:56
+#: apps/dashboard/templates/pages/patient_list.html:38
+msgid "Registered"
+msgstr "Inskrebe"
+
+#: apps/dashboard/templates/pages/patient_detail.html:72
+msgid "Observed"
+msgstr "Observa"
+
+#: apps/dashboard/templates/pages/patient_detail.html:73
+msgid "Temp (°C)"
+msgstr ""
+
+#: apps/dashboard/templates/pages/patient_detail.html:74
+msgid "HR"
+msgstr ""
+
+#: apps/dashboard/templates/pages/patient_detail.html:75
+msgid "RR"
+msgstr ""
+
+#: apps/dashboard/templates/pages/patient_detail.html:76
+msgid "BP"
+msgstr ""
+
+#: apps/dashboard/templates/pages/patient_detail.html:77
+msgid "SpO₂"
+msgstr ""
+
+#: apps/dashboard/templates/pages/patient_detail.html:78
+#: apps/emergencies/models.py:39 apps/monitoring/models.py:57
+msgid "Symptoms"
+msgstr "Sintomas"
+
+#: apps/dashboard/templates/pages/patient_detail.html:79
+msgid "By"
+msgstr "Husi"
+
+#: apps/dashboard/templates/pages/patient_detail.html:103
+msgid "No monitoring records"
+msgstr "La'os rekordi monitorizasaun"
+
+#: apps/dashboard/templates/pages/patient_detail.html:104
+msgid "Observations recorded from the field will appear here after sync."
+msgstr "Observasaun gravadu husi fatin sei hatudu iha ne'e lia husu."
+
+#: apps/dashboard/templates/pages/patient_list.html:9
+msgid "Records"
+msgstr "Rekordis"
+
+#: apps/dashboard/templates/pages/patient_list.html:12
+msgid ""
+"List shows the safe patient handle only — contact details live on the record "
+"itself."
+msgstr ""
+"Lista hatudu seguru tau ID paziente de'it — detálhes kontaktu iha rekordi  "
+"nian."
+
+#: apps/dashboard/templates/pages/patient_list.html:17
+msgid "Search by patient ID or name"
+msgstr "Buka liu husi ID paziente ka naran"
+
+#: apps/dashboard/templates/pages/patient_list.html:19
+msgid "PT-… or name"
+msgstr "PT-… ka naran"
+
+#: apps/dashboard/templates/pages/patient_list.html:21
+msgid "Search"
+msgstr "Buka"
+
+#: apps/dashboard/templates/pages/patient_list.html:34
+#: apps/patients/models.py:56
+msgid "Patient ID"
+msgstr "ID paziente"
+
+#: apps/dashboard/templates/pages/patient_list.html:35
+msgid "Age group"
+msgstr "Grupu idade"
+
+#: apps/dashboard/templates/pages/patient_list.html:59
+msgid "No patients match your search"
+msgstr "La'es paziente konet ho bukaian ida"
+
+#: apps/dashboard/templates/pages/patient_list.html:60
+msgid "Check the patient ID or try another spelling."
+msgstr "Rejista ID paziente ka tenta seluk."
+
+#: apps/dashboard/templates/pages/patient_list.html:62
+msgid "No patients yet"
+msgstr "La'os paziente tan"
+
+#: apps/dashboard/templates/pages/patient_list.html:63
+msgid "Patients registered from the field will appear here after sync."
+msgstr "Pazientis inskrevu husi fatin sei hatudu iha ne'e lia husu."
+
+#: apps/dashboard/templates/pages/referral_list.html:9
+msgid "Between facilities"
+msgstr "Laran fasilitades"
+
+#: apps/dashboard/templates/pages/referral_list.html:12
+msgid "Sent from or received by your facility."
+msgstr "Anin husi fasilitade ida ka resebe hosi fasilitade ida."
+
+#: apps/dashboard/templates/pages/referral_list.html:35
+msgid "From"
+msgstr "Hosi"
+
+#: apps/dashboard/templates/pages/referral_list.html:59
+msgid "No referrals with this status"
+msgstr "La'os referália ho esta ida"
+
+#: apps/dashboard/templates/pages/referral_list.html:62
+msgid "No referrals"
+msgstr "La'os referália"
+
+#: apps/dashboard/templates/pages/referral_list.html:63
+msgid "Referrals between facilities will appear here."
+msgstr "Referália laran fasilitades sei hatudu iha ne'e."
+
+#: apps/dashboard/templates/pages/sync_status.html:9
+msgid "Connectivity"
+msgstr "Konetividade"
+
+#: apps/dashboard/templates/pages/sync_status.html:12
+msgid "Last client check-in per facility — not a live connection test."
+msgstr "Check-in kliente ikus kada fasilitade — la'é teste konetaun langsung."
+
+#: apps/dashboard/templates/pages/sync_status.html:18
+#, python-format
+msgid "%(n)s records pending sync across facilities."
+msgstr "%(n)s rekordi he'in sincronizasaun iha fasilitades tomak."
+
+#: apps/dashboard/templates/pages/sync_status.html:31
+msgid "Last sync"
+msgstr "Sincronizasaun ikus"
+
+#: apps/dashboard/templates/pages/sync_status.html:32 apps/syncapp/models.py:31
+msgid "Pending records"
+msgstr "Rekordi péndente"
+
+#: apps/dashboard/templates/pages/sync_status.html:33 apps/syncapp/models.py:28
+msgid "Reported by"
+msgstr "Informadu husi"
+
+#: apps/dashboard/templates/pages/sync_status.html:47
+msgid "STALE"
+msgstr ""
+
+#: apps/dashboard/templates/pages/sync_status.html:53
+msgid "NEVER SYNCED"
+msgstr ""
+
+#: apps/dashboard/templates/pages/sync_status.html:67
+msgid "No active facilities"
+msgstr "La'os fasilitade ativa"
+
+#: apps/dashboard/templates/pages/sync_status.html:68
+msgid "Facilities registered by the administrator will appear here."
+msgstr "Fasilitades inskrevu husi administradór sei hatudu iha ne'e."
+
+#: apps/dashboard/templatetags/status_tags.py:16
+msgid "LOW"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:17
+msgid "MEDIUM"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:18
+msgid "HIGH"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:19
+msgid "CRITICAL"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:22
+msgid "OPEN"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:23
+msgid "IN REVIEW"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:24
+msgid "ESCALATED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:25
+msgid "RESOLVED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:28
+msgid "ROUTINE"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:29
+msgid "URGENT"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:30
+msgid "EMERGENCY"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:33
+msgid "PENDING"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:34
+msgid "ACCEPTED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:35
+msgid "IN TRANSIT"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:36
+msgid "COMPLETED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:37
+msgid "CANCELLED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:40
+msgid "PENDING SYNC"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:41
+msgid "SYNCING"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:42
+msgid "SYNCED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:43
+msgid "SYNC FAILED"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:46
+msgid "ONLINE"
+msgstr ""
+
+#: apps/dashboard/templatetags/status_tags.py:47
+msgid "OFFLINE"
+msgstr ""
+
+#: apps/dashboard/views.py:36
+msgid "All facilities"
+msgstr "Fasilitates hotu"
+
+#: apps/dashboard/views.py:38
+msgid "No facility assigned"
+msgstr "La'os fasilitade asignadu"
+
+#: apps/dashboard/views.py:71 apps/patients/models.py:82
+#: templates/partials/nav.html:18
+msgid "Patients"
+msgstr "Pazientis"
+
+#: apps/dashboard/views.py:96 apps/emergencies/models.py:52
+msgid "Emergency cases"
+msgstr "Kazus emergensia"
+
+#: apps/dashboard/views.py:116 apps/referrals/models.py:62
+#: templates/partials/nav.html:17
+msgid "Referrals"
+msgstr "Referália"
+
+#: apps/dashboard/views.py:171 templates/partials/nav.html:19
+msgid "Facilities"
+msgstr "Fasilitates"
+
+#: apps/dashboard/views.py:206
+msgid "Sync status"
+msgstr "Estadu sincronizasaun"
+
+#: apps/dashboard/views.py:274
+msgid "Recent sync"
+msgstr "Sincronizasaun foun"
+
+#: apps/dashboard/views.py:275
+msgid "Stale"
+msgstr ""
+
+#: apps/dashboard/views.py:276
+msgid "Never synced"
+msgstr ""
+
+#: apps/dashboard/views.py:281 templates/partials/nav.html:20
+msgid "Map"
+msgstr "Mapa"
+
+#: apps/emergencies/models.py:16
+msgid "Low"
+msgstr "Baixu"
+
+#: apps/emergencies/models.py:17
+msgid "Medium"
+msgstr "Médiu"
+
+#: apps/emergencies/models.py:18
+msgid "High"
+msgstr "Altu"
+
+#: apps/emergencies/models.py:19
+msgid "Critical"
+msgstr "Kritiku"
+
+#: apps/emergencies/models.py:22
+msgid "Open"
+msgstr "Abertu"
+
+#: apps/emergencies/models.py:23
+msgid "In review"
+msgstr "Iha reviza"
+
+#: apps/emergencies/models.py:24
+msgid "Escalated"
+msgstr "Escalada"
+
+#: apps/emergencies/models.py:25
+msgid "Resolved"
+msgstr "Resolvu"
+
+#: apps/emergencies/models.py:28 apps/monitoring/models.py:27
+#: apps/patients/models.py:52 apps/referrals/models.py:28
+msgid "Client UUID"
+msgstr ""
+
+#: apps/emergencies/models.py:29 apps/monitoring/models.py:28
+#: apps/patients/models.py:53 apps/referrals/models.py:29
+msgid "Client-generated UUID for idempotent offline sync (design §8)."
+msgstr ""
+"UUID jeradu husi kliente ba sincronizasaun idempotente offline (design  "
+"§8)."
+
+#: apps/emergencies/models.py:40
+msgid "Description"
+msgstr "Descriisaun"
+
+#: apps/emergencies/models.py:51
+msgid "Emergency case"
+msgstr "Kazu emergensia"
+
+#: apps/emergencies/models.py:60 apps/referrals/models.py:80
+msgid "Status unchanged."
+msgstr "Estadu la' troka."
+
+#: apps/facilities/models.py:21
+msgid "Hospital"
+msgstr "Hospital"
+
+#: apps/facilities/models.py:22
+msgid "Health centre"
+msgstr "Sentru saúde"
+
+#: apps/facilities/models.py:23
+msgid "Health post"
+msgstr "Postu saúde"
+
+#: apps/facilities/models.py:24
+msgid "Private clinic"
+msgstr "Klinika privada"
+
+#: apps/facilities/models.py:29
+msgid "Facility type"
+msgstr "Tipu fasilitade"
+
+#: apps/facilities/models.py:39 apps/patients/models.py:73
+msgid "Active"
+msgstr "Ativu"
+
+#: apps/facilities/models.py:45
+msgid "Health facility"
+msgstr "Fasilitade saúde"
+
+#: apps/facilities/models.py:46
+msgid "Health facilities"
+msgstr "Fasilitades saúde"
+
+#: apps/locations/models.py:10 apps/locations/models.py:36
+#: apps/locations/models.py:62
+msgid "Code"
+msgstr "Kódigu"
+
+#: apps/locations/models.py:23
+msgid "Municipalities"
+msgstr "Munisípius"
+
+#: apps/locations/models.py:49
+msgid "Administrative posts"
+msgstr "Postus administrativus"
+
+#: apps/locations/models.py:75
+msgid "Sucos"
+msgstr "Sucos"
+
+#: apps/monitoring/models.py:36
+msgid "Observed at"
+msgstr "Observadu iha"
+
+#: apps/monitoring/models.py:38
+msgid "Temperature (°C)"
+msgstr "Temperatura (°C)"
+
+#: apps/monitoring/models.py:41
+msgid "Heart rate (bpm)"
+msgstr "Ritmu koração (bpm)"
+
+#: apps/monitoring/models.py:44
+msgid "Respiratory rate"
+msgstr "Ritmu respira"
+
+#: apps/monitoring/models.py:47
+msgid "BP systolic"
+msgstr "BP sistóliku"
+
+#: apps/monitoring/models.py:51
+msgid "BP diastolic"
+msgstr "BP diastóliku"
+
+#: apps/monitoring/models.py:55
+msgid "SpO₂ (%)"
+msgstr ""
+
+#: apps/monitoring/models.py:57
+msgid "Symptoms observed, free text or chip list."
+msgstr "Sintomas observadu, tekstu lívre ka lista chip."
+
+#: apps/monitoring/models.py:58 apps/referrals/models.py:53
+msgid "Notes"
+msgstr "Notas"
+
+#: apps/monitoring/models.py:65
+msgid "Monitoring record"
+msgstr "Rekordi monitorizasaun"
+
+#: apps/patients/models.py:47
+msgid "Female"
+msgstr "Feto"
+
+#: apps/patients/models.py:48
+msgid "Male"
+msgstr "Mane"
+
+#: apps/patients/models.py:49
+msgid "Other"
+msgstr "Lain"
+
+#: apps/patients/models.py:58
+msgid "First name"
+msgstr "Primeiru naran"
+
+#: apps/patients/models.py:59
+msgid "Last name"
+msgstr "Últimu naran"
+
+#: apps/patients/models.py:66
+msgid "Phone may contain digits and + - ( ) only"
+msgstr "Telefone tenke fokaan númerus + - ( ) de'it"
+
+#: apps/referrals/models.py:16
+msgid "Routine"
+msgstr "Rotina"
+
+#: apps/referrals/models.py:17
+msgid "Urgent"
+msgstr "Ujente"
+
+#: apps/referrals/models.py:18
+msgid "Emergency"
+msgstr "Emergensia"
+
+#: apps/referrals/models.py:21
+msgid "Pending"
+msgstr "Péndente"
+
+#: apps/referrals/models.py:22
+msgid "Accepted"
+msgstr "Aseita"
+
+#: apps/referrals/models.py:23
+msgid "In transit"
+msgstr "Iha transítu"
+
+#: apps/referrals/models.py:24
+msgid "Completed"
+msgstr "Konpleta"
+
+#: apps/referrals/models.py:25
+msgid "Cancelled"
+msgstr "Anula"
+
+#: apps/referrals/models.py:48
+msgid "Reason"
+msgstr "Razão"
+
+#: apps/referrals/models.py:61
+msgid "Referral"
+msgstr "Referália"
+
+#: apps/referrals/models.py:74
+msgid "Source and destination must differ."
+msgstr "Origem no destinu tenke la' idéntiku."
+
+#: apps/syncapp/models.py:34
+msgid "Client-reported number of local records not yet synced."
+msgstr "Númeru kliente relatau husi rekordis lokáis la'ó sinlroniza."
+
+#: apps/syncapp/models.py:40
+msgid "Sync heartbeat"
+msgstr "Batimentu sincronizasaun"
+
+#: apps/syncapp/models.py:41
+msgid "Sync heartbeats"
+msgstr "Batimentus sincronizasaun"
+
+#: apps/syncapp/models.py:44
+msgid "No facility"
+msgstr "La'os fasilitade"
+
+#: apps/users/admin.py:16 apps/users/admin.py:22 templates/base.html:8
+msgid "SaúdeKonekta"
+msgstr ""
+
+#: apps/users/mixins.py:22 templates/403.html:9
+msgid "You do not have permission to view this page."
+msgstr "Ita la'os husia hakarak iha pájina ida."
+
+#: apps/users/models.py:14
+msgid "System administrator"
+msgstr "Administradór sistéma"
+
+#: apps/users/models.py:15
+msgid "Doctor"
+msgstr "Doutór"
+
+#: apps/users/models.py:16
+msgid "Health worker"
+msgstr "Trabaladór saúde"
+
+#: apps/users/models.py:19 templates/partials/nav.html:35
+msgid "Role"
+msgstr "Papel"
+
+#: apps/users/models.py:28
+msgid "Scoping facility for doctors and health workers."
+msgstr "Fasilitade skópu ba doutoris no trabladór saúde nian."
+
+#: apps/users/models.py:33
+msgid "User"
+msgstr "Utilizador"
+
+#: apps/users/models.py:34
+msgid "Users"
+msgstr "Utilizadores"
+
+#: apps/users/urls.py:13 templates/registration/login.html:4
+#: templates/registration/login.html:12 templates/registration/login.html:40
+msgid "Log in"
+msgstr "Login"
+
+#: templates/403.html:4
+msgid "No permission"
+msgstr "La'os husia"
+
+#: templates/403.html:10
+msgid ""
+"Your account only shows data for its assigned scope. If you think this is a "
+"mistake, contact your system administrator."
+msgstr ""
+"Seu konta hatudu dadus de'it husi skópu asignadu. Nee kónfu, kontaktu  "
+"administradór sistéma nian."
+
+#: templates/403.html:11
+msgid "Back to overview"
+msgstr "Fila ba resumen"
+
+#: templates/base.html:33
+msgid ""
+"SaúdeKonekta — decision support only. It does not diagnose or replace "
+"medical professionals."
+msgstr ""
+"SaúdeKonekta — ajuda tomak de'it. Ida la'é diagnostiku ka substitui  "
+"profisionáis saúde."
+
+#: templates/partials/nav.html:16
+msgid "Emergencies"
+msgstr "Emergensia"
+
+#: templates/partials/nav.html:21
+msgid "Sync"
+msgstr "Sincronizasaun"
+
+#: templates/partials/nav.html:44
+msgid "Log out"
+msgstr "Sai"
+
+#: templates/partials/nav.html:59
+msgid "Language"
+msgstr "Lingua"
+
+#: templates/partials/pagination.html:4
+msgid "Pagination"
+msgstr "Paginasaun"
+
+#: templates/partials/pagination.html:8
+msgid "Previous"
+msgstr "Abau"
+
+#: templates/partials/pagination.html:17
+#, python-format
+msgid "Page %(n)s of %(total)s"
+msgstr "Página %(n)s husi %(total)s"
+
+#: templates/partials/pagination.html:22
+msgid "Next"
+msgstr "Ba oin"
+
+#: templates/registration/login.html:11
+msgid "Health platform"
+msgstr "Platafórma saúde"
+
+#: templates/registration/login.html:13
+msgid "Sign in to review cases and referrals."
+msgstr "Heve login ba reviza kazu no referália."
+
+#: templates/registration/login.html:17
+msgid "Incorrect username or password. Please try again."
+msgstr "Utilizador ka sandu trókadu. Tenta mai fali."
+
+#: templates/registration/login.html:23
+msgid "Your account does not have access to this page."
+msgstr "Seu konta la'as hakarak iha pájina ne'e."
+
+#: templates/registration/login.html:30
+msgid "Username"
+msgstr "Utilizador"
+
+#: templates/registration/login.html:35
+msgid "Password"
+msgstr "Sandu"

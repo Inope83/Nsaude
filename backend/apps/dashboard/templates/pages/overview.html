@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load i18n status_tags %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Overview" %}</p>
+    <h1>{{ scope_label }}</h1>
+  </div>
+  <p class="meta-line mb-0">{% trans "Decision support only — it does not diagnose or replace medical professionals." %}</p>
+</div>
+
+<div class="card-grid section-gap">
+  <div class="card p-4">
+    <p class="overline">{% trans "Active emergencies" %}</p>
+    <p class="display-6 mb-2">{{ count_active_emergencies }}</p>
+    <a class="meta-line" href="{% url 'dashboard:emergency-list' %}">{% trans "View emergencies" %}</a>
+  </div>
+  <div class="card p-4">
+    <p class="overline">{% trans "Pending referrals" %}</p>
+    <p class="display-6 mb-2">{{ count_pending_referrals }}</p>
+    <a class="meta-line" href="{% url 'dashboard:referral-list' %}">{% trans "View referrals" %}</a>
+  </div>
+  <div class="card p-4">
+    <p class="overline">{% trans "Active patients" %}</p>
+    <p class="display-6 mb-2">{{ count_patients }}</p>
+    <a class="meta-line" href="{% url 'dashboard:patient-list' %}">{% trans "View patients" %}</a>
+  </div>
+  <div class="card p-4">
+    <p class="overline">{% trans "Monitoring records" %}</p>
+    <p class="display-6 mb-2">{{ count_monitoring }}</p>
+  </div>
+</div>
+
+<div class="card-grid section-gap">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span class="overline mb-0">{% trans "Recent emergencies" %}</span>
+      <a class="meta-line" href="{% url 'dashboard:emergency-list' %}">{% trans "View all" %}</a>
+    </div>
+    <div class="card-body">
+      {% if recent_emergencies %}
+        <div class="table-wrap">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>{% trans "Patient" %}</th>
+                <th>{% trans "Severity" %}</th>
+                <th>{% trans "Status" %}</th>
+                <th class="text-end">{% trans "Created" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for e in recent_emergencies %}
+                <tr>
+                  <td><span class="num">{{ e.patient__patient_id }}</span></td>
+                  <td>{% status_badge 'severity' e.severity %}</td>
+                  <td>{% status_badge 'emergency_status' e.status %}</td>
+                  <td class="text-end"><span class="num">{{ e.created_at|date:"Y-m-d H:i" }}</span></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        {% translate "No active emergencies" as t_title %}
+        {% translate "New emergency cases from the field will appear here." as t_msg %}
+        {% include "components/empty_state.html" with icon="bi-check-circle" title=t_title message=t_msg %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span class="overline mb-0">{% trans "Pending referrals" %}</span>
+      <a class="meta-line" href="{% url 'dashboard:referral-list' %}">{% trans "View all" %}</a>
+    </div>
+    <div class="card-body">
+      {% if pending_referrals %}
+        <div class="table-wrap">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>{% trans "Patient" %}</th>
+                <th>{% trans "Urgency" %}</th>
+                <th>{% trans "To" %}</th>
+                <th class="text-end">{% trans "Created" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for r in pending_referrals %}
+                <tr>
+                  <td><span class="num">{{ r.patient__patient_id }}</span></td>
+                  <td>{% status_badge 'urgency' r.urgency %}</td>
+                  <td>{{ r.destination_facility__name }}</td>
+                  <td class="text-end"><span class="num">{{ r.created_at|date:"Y-m-d H:i" }}</span></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        {% translate "No pending referrals" as t_title %}
+        {% translate "Referrals waiting for action will appear here." as t_msg %}
+        {% include "components/empty_state.html" with icon="bi-arrow-left-right" title=t_title message=t_msg %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

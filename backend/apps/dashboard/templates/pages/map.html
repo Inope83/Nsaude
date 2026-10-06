@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{{ page_title }} — SaúdeKonekta{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <p class="overline mb-1">{% trans "Overview" %}</p>
+    <h1>{{ page_title }}</h1>
+  </div>
+  <p class="meta-line mb-0">{% trans "Markers show facilities, sync freshness and emergency counts — never patient information." %}</p>
+</div>
+
+{% if facilities_without_geo %}
+  <div class="banner banner--neutral mb-4" role="status">
+    <i class="bi bi-geo-alt" aria-hidden="true"></i>
+    <span>{% blocktrans with n=facilities_without_geo %}{{ n }} active facilities have no coordinates yet — they are listed on the Facilities page instead.{% endblocktrans %}</span>
+  </div>
+{% endif %}
+
+<div class="banner banner--warning mb-4" role="alert" id="map-offline" hidden>
+  <i class="bi bi-wifi-off" aria-hidden="true"></i>
+  <span>{% trans "Map imagery unavailable — markers still work without it." %}</span>
+</div>
+
+<div class="filter-bar d-flex gap-2 flex-wrap align-items-center section-gap">
+  <span class="overline mb-0">{% trans "Layers" %}</span>
+  <button class="btn btn-sm btn-primary" type="button" id="toggle-facilities"
+          aria-pressed="true">{% trans "Facilities & sync" %}</button>
+  <button class="btn btn-sm btn-primary" type="button" id="toggle-emergencies"
+          aria-pressed="true">{% trans "Active emergencies" %}</button>
+  <span class="meta-line mb-0 ms-auto">{% blocktrans with n=facility_count %}{{ n }} facilities on the map{% endblocktrans %}</span>
+</div>
+
+<div id="map" role="region" aria-label="{% trans 'Map of health facilities' %}"></div>
+{{ payload|json_script:"map-data" }}
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'vendor/leaflet/leaflet.js' %}"></script>
+  <script src="{% static 'js/map.js' %}"></script>
+{% endblock %}
