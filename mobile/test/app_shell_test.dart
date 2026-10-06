@@ -1,6 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:saude_konekta/core/api/api_client.dart';
+import 'package:saude_konekta/core/api/token_store.dart';
 import 'package:saude_konekta/core/l10n/app_strings.dart';
+import 'package:saude_konekta/core/sync/app_database.dart';
+import 'package:saude_konekta/core/sync/sync_engine.dart';
 import 'package:saude_konekta/core/theme/app_theme.dart';
 import 'package:saude_konekta/features/auth/auth_repository.dart';
 import 'package:saude_konekta/features/auth/user_profile.dart';
@@ -8,6 +13,9 @@ import 'package:saude_konekta/features/patients/models/patient.dart';
 import 'package:saude_konekta/features/patients/patient_list_screen.dart';
 import 'package:saude_konekta/features/patients/patient_repository.dart';
 import 'package:saude_konekta/features/shell/app_shell.dart';
+
+import 'support/fake_connectivity.dart';
+import 'support/fake_http.dart';
 
 UserProfile _sampleProfile() {
   return const UserProfile(
@@ -151,5 +159,77 @@ void main() {
 
     expect(auth.logoutCalls, 1);
     expect(loggedOut, isTrue);
+  });
+
+  testWidgets('opens the sync status screen from the app bar', (tester) async {
+    final db = AppDatabase.memory();
+    addTearDown(db.close);
+    final connectivity = FakeConnectivityService();
+    addTearDown(connectivity.dispose);
+    final engine = SyncEngine(
+      store: db,
+      client: ApiClient(
+        tokenStore: MemoryTokenStore(),
+        dio: Dio()..httpClientAdapter = FakeAdapter(
+            (options) async => jsonResponse(<String, dynamic>{'id': 1})),
+      ),
+      connectivity: connectivity,
+    );
+
+    await tester.pumpWidget(
+      _wrap(
+        AppShell(
+          authService: _FakeAuth(),
+          onLoggedOut: () {},
+          syncEngine: engine,
+          connectivity: connectivity,
+        ),
+      ),
+    );
+
+    await tester.tap(find.byTooltip(AppStrings.syncTooltip));
+    await tester.pumpAndSettle();
+
+    expect(find.text(AppStrings.syncTitle), findsWidgets);
+    expect(find.text(AppStrings.syncNow), findsOneWidget);
+  });
+
+  testWidgets('syncs automatically when connectivity returns', (tester) async {
+    final db = AppDatabase.memory();
+    addTearDown(db.close);
+    final connectivity = FakeConnectivityService(initialOnline: false);
+    addTearDown(connectivity.dispose);
+    final engine = SyncEngine(
+      store: db,
+      client: ApiClient(
+        tokenStore: MemoryTokenStore(),
+        dio: Dio()..httpClientAdapter = FakeAdapter(
+            (options) async => jsonResponse(<String, dynamic>{'id': 1})),
+      ),
+      connectivity: connectivity,
+    );
+    await db.enqueue(
+      clientUuid: 'queued-1',
+      entityType: 'patients',
+      method: 'POST',
+      path: '/api/patients/',
+      payload: <String, dynamic>{},
+    );
+
+    await tester.pumpWidget(
+      _wrap(
+        AppShell(
+          authService: _FakeAuth(),
+          onLoggedOut: () {},
+          syncEngine: engine,
+          connectivity: connectivity,
+        ),
+      ),
+    );
+
+    connectivity.emit(true);
+    await tester.pumpAndSettle();
+
+    expect(await db.pendingCount(), 0);
   });
 }

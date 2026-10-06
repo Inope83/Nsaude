@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../core/l10n/app_strings.dart';
@@ -67,6 +69,28 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   late int _index = widget.initialIndex;
+  StreamSubscription<bool>? _connectivitySubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    final connectivity = widget.connectivity;
+    final syncEngine = widget.syncEngine;
+    if (connectivity != null && syncEngine != null) {
+      _connectivitySubscription =
+          connectivity.onStatusChanged.listen((online) {
+        if (online) {
+          syncEngine.sync();
+        }
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _connectivitySubscription?.cancel();
+    super.dispose();
+  }
 
   Future<void> _logout() async {
     await widget.authService.logout();

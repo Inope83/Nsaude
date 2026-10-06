@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/api/api_client.dart';
 import 'core/api/token_store.dart';
@@ -125,6 +126,12 @@ class _SaudeKonektaAppState extends State<SaudeKonektaApp> {
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
+      supportedLocales: const <Locale>[Locale('en')],
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       home: _checkingSession
           ? const Scaffold(
               body: Center(child: CircularProgressIndicator()),
